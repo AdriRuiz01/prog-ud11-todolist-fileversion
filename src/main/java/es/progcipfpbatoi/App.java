@@ -30,7 +30,7 @@ public class App extends Application {
         // Muestra de la escena principal.
         ChangeScene.change(stage, tareaController, "/vistas/tarea_list.fxml");
 
-        TareaSearchController tareaSearchController = new TareaSearchController(tareaRepository);
+       //TareaSearchController tareaSearchController = new TareaSearchController(tareaRepository);
        // ChangeScene.change(stage, tareaSearchController, "/vistas/tarea_search.fxml");
     }
 

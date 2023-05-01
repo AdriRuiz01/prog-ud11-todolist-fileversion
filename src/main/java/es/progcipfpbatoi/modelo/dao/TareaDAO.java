@@ -4,6 +4,7 @@ import es.progcipfpbatoi.exceptions.DatabaseErrorException;
 import es.progcipfpbatoi.exceptions.NotFoundException;
 import es.progcipfpbatoi.modelo.dto.Tarea;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public interface TareaDAO {
@@ -33,5 +34,5 @@ public interface TareaDAO {
      * @return
      * @throws DatabaseErrorException
      */
-    boolean save(Tarea tarea) throws DatabaseErrorException;
+    boolean save(Tarea tarea) throws DatabaseErrorException, IOException;
 }

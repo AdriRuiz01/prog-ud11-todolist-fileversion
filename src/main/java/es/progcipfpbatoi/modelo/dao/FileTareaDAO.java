@@ -115,34 +115,44 @@ public class FileTareaDAO implements TareaDAO{
     }
 
     @Override
-    public boolean save(Tarea tarea){
+    public boolean save(Tarea tarea) throws IOException {
         ArrayList<Tarea> tareas = findAll();
         boolean tareaActualizada = false;
         for (int i = 0; i < tareas.size(); i++) {
-            Tarea tareaItem = tareas.get(i);
-            if (tareaItem.getDescripcion().equals(tarea.getDescripcion())) {
+            Tarea tareaI = tareas.get(i);
+            if (tareaI.getDescripcion().equals(tarea.getDescripcion())) {
                 tareas.set(i, tarea);
                 tareaActualizada = true;
                 System.out.println("Tarea actualizada");
+
             }
         }
         if (!tareaActualizada) {
             tareas.add(tarea);
             System.out.println("Tarea añadida");
         }
+
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(this.file))) {
-            for (Tarea tareaItem : tareas) {
-                String lineaTarea = convertirAString(tareaItem);
+            for (Tarea tareaI : tareas) {
+                
+                int id = tareaI.getId();
+                String idString= String.valueOf(id);
+                LocalDateTime fecha = tareaI.getFechaAlta();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String fechaString = fecha.format(formatter);
+                boolean finalizado = tareaI.isFinalizada();
+                String finalizadoString= String.valueOf(finalizado);
+                Categoria categoria = tareaI.getCategoria();
+                String categoriaString = categoria.toString();
+
+                String lineaTarea = idString+";"+tareaI.getDescripcion()+";"+fechaString+";"+finalizadoString+";"+categoriaString;
                 bufferedWriter.write(lineaTarea);
                 bufferedWriter.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new IOException("Error al guardar la tarea en la base de datos");
+            throw new IOException("Ocurrió un error en el acceso a la base de datos");
         }
         return true;
-
-
     }
 
 }

@@ -5,6 +5,7 @@ import es.progcipfpbatoi.exceptions.NotFoundException;
 import es.progcipfpbatoi.modelo.dao.TareaDAO;
 import es.progcipfpbatoi.modelo.dto.Tarea;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TareaRepository {
@@ -27,7 +28,7 @@ public class TareaRepository {
         return tareaDAO.getById(id);
     }
 
-    public boolean save(Tarea tarea) throws DatabaseErrorException {
+    public boolean save(Tarea tarea) throws DatabaseErrorException, IOException {
         return tareaDAO.save(tarea);
     }
 }

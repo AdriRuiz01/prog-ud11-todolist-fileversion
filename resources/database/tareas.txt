@@ -1,3 +1,4 @@
 1;sacar al perro;2022-02-04 12:12:21;true;HOGAR
-2;fifa con mi amigo;2023-01-13 20:10:00; false;JUGAR
-3;actividad 1 de entornos;2023-03-11 19:00:00;false;CLASE
+2;fifa con mi amigo;2023-01-13 20:10:00;false;JUGAR
+3;actividad 1 de entornos;2023-03-11 19:00:00;true;CLASE
+4;tarea prueba;2023-05-01 23:23:09;true;HOGAR

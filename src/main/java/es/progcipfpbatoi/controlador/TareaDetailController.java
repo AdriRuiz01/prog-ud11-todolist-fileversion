@@ -69,6 +69,8 @@ public class TareaDetailController implements Initializable {
             this.tareaRepository.save(tarea);
         } catch (DatabaseErrorException ex) {
             AlertMessages.mostrarAlertError("No se ha podido guardar la tarea. Error en el acceso a la base de datos.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
