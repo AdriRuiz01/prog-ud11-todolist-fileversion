@@ -32,12 +32,12 @@ public class FileTareaDAO implements TareaDAO{
            BufferedReader bufferedReader = new BufferedReader(new FileReader(DATABASE_FILE));
             
             do {
-                String line = bufferedReader.readLine();
-                if(line == null){
+                String register = bufferedReader.readLine();
+                if(register == null){
                     return tareas;
                 }
 
-                String[] componente = line.split(";");
+                String[] componente = register.split(";");
 
                 int id = Integer.parseInt(componente[ID]);
                 String descripcion = componente[DESCRIPCION];
@@ -47,7 +47,7 @@ public class FileTareaDAO implements TareaDAO{
 
                 tareas.add(new Tarea(id,descripcion,fecha,finalizado,categoria));
 
-                System.out.println(line);
+                System.out.println(register);
             }while (true);
 
         }catch (IOException e){
@@ -63,12 +63,12 @@ public class FileTareaDAO implements TareaDAO{
             BufferedReader bufferedReader = new BufferedReader(new FileReader(DATABASE_FILE));
             
             do{
-                String linea = bufferedReader.readLine();
-                if (linea == null) {
+                String register = bufferedReader.readLine();
+                if (register == null) {
                     return tareas;
                 }
 
-                String[] componente = linea.split(";");
+                String[] componente = register.split(";");
                 int id = Integer.parseInt(componente[ID]);
                 String descripcion = componente[DESCRIPCION];
                 LocalDateTime fecha = LocalDateTime.parse(componente[FECHA], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
