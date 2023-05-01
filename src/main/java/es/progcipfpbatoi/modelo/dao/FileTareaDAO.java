@@ -58,26 +58,26 @@ public class FileTareaDAO implements TareaDAO{
 
     @Override
     public ArrayList<Tarea> findAll(String text) throws DatabaseErrorException {
-        ArrayList<Tarea> arrayListTareas= new ArrayList<>();
+        ArrayList<Tarea> tareas = new ArrayList<>();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(DATABASE_FILE));
             
             do{
                 String linea = bufferedReader.readLine();
                 if (linea == null) {
-                    return arrayListTareas;
+                    return tareas;
                 }
 
-                String[] componentes = linea.split(";");
-                int id = Integer.parseInt(componentes[ID]);
-                String descripcion = componentes[DESCRIPCION];
-                LocalDateTime fecha = LocalDateTime.parse(componentes[FECHA], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                boolean finalizado = Boolean.parseBoolean(componentes[FINALIZADO]);
-                Categoria categoria = Categoria.valueOf(componentes[CATEGORIA]);
+                String[] componente = linea.split(";");
+                int id = Integer.parseInt(componente[ID]);
+                String descripcion = componente[DESCRIPCION];
+                LocalDateTime fecha = LocalDateTime.parse(componente[FECHA], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                boolean finalizado = Boolean.parseBoolean(componente[FINALIZADO]);
+                Categoria categoria = Categoria.valueOf(componente[CATEGORIA]);
 
                 Tarea tarea = new Tarea(id,descripcion,fecha,finalizado,categoria);
                 if (descripcion.startsWith(text)) {
-                    arrayListTareas.add(tarea);
+                    tareas.add(tarea);
                 }
 
             }while (true);
