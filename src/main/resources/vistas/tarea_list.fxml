@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.85" orientation="VERTICAL" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: #3d5afe;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <ImageView fitHeight="56.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icon_app.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Listado simple de tareas" textFill="#f8f4f4">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView fx:id="tareaListView" fixedCellSize="50.0" layoutY="96.0" onMouseClicked="#handleSelectedItem" prefHeight="319.0" prefWidth="388.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="96.0" />
+                  <TextField fx:id="searchBar" layoutX="5.0" layoutY="70.0" onKeyTyped="#searchTasks" prefHeight="27.0" prefWidth="388.0" promptText="Introduce un texto para buscar..." />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextField fx:id="nuevaTareaTextField" prefHeight="62.0" prefWidth="238.0" promptText="Introduce tu nueva tarea" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="5.0" />
+                  <ComboBox fx:id="categorySelector" layoutX="251.0" layoutY="24.0" prefHeight="24.0" prefWidth="92.0" />
+                  <Button layoutX="358.0" layoutY="5.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="42.0" prefWidth="35.0" text="+" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
